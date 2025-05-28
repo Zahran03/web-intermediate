@@ -4,18 +4,24 @@ import {
   generateAuthenticatedNavigationListTemplate,
   generateUnauthenticatedNavigationListTemplate,
 } from "../template";
+import { setupSkipToContent } from "../utils";
 import { getToken, logoutUser } from "../utils/auth";
 
 class App {
   #content = null;
   #drawerButton = null;
   #navigationDrawer = null;
-
-  constructor({ navigationDrawer, drawerButton, content }) {
+  #skipLinkButton;
+  constructor({ navigationDrawer, drawerButton, content, skipLinkButton }) {
     this.#content = content;
     this.#drawerButton = drawerButton;
     this.#navigationDrawer = navigationDrawer;
+    this.#skipLinkButton = skipLinkButton;
+    this.#init();
+  }
 
+  #init() {
+    setupSkipToContent(this.#skipLinkButton, this.#content);
     this.#setupDrawer();
   }
 

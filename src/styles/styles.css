@@ -669,6 +669,23 @@ input[type="checkbox"] {
   color: #ccc;
 }
 
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background-color: #bf1722; /* Warna latar belakang saat aktif */
+  color: white; /* Warna teks saat aktif */
+  padding: 8px;
+  z-index: 100;
+  transform: translateY(0);
+  transition: transform 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+  transform: translateY(100%);
+}
+
 @media screen and (min-width: 768px) {
   .footer-content {
     flex-direction: row;
