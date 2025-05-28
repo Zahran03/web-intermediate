@@ -50,8 +50,12 @@ export default class HomePage {
 
         if (!isNaN(lat) && !isNaN(lon)) {
           const coordinate = [lat, lon];
-          const markerOptions = { alt: story.title || "Unnamed location" };
-          const popupOptions = { content: story.title || "Unnamed location" };
+          const markerOptions = {
+            alt: story.description || "Unnamed location",
+          };
+          const popupOptions = {
+            content: story.description || "Unnamed location",
+          };
           this.#map.addMarker(coordinate, markerOptions, popupOptions);
         }
       }

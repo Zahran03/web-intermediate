@@ -93,7 +93,13 @@ export default class Map {
       ...options,
     });
   }
-
+  changeCamera(coordinate, zoomLevel = null) {
+    if (!zoomLevel) {
+      this.#map.setView(latLng(coordinate), this.#zoom);
+      return;
+    }
+    this.#map.setView(latLng(coordinate), zoomLevel);
+  }
   getCenter() {
     const { lat, lng } = this.#map.getCenter();
     return {
@@ -126,8 +132,13 @@ export default class Map {
       if (!("content" in popupOptions)) {
         throw new Error("popupOptions must include `content` property.");
       }
-      const newPopup = popup(coordinates, popupOptions);
-      newMarker.bindPopup(newPopup);
+      newMarker.bindPopup(popupOptions.content, {
+        // You can add additional popup options here if needed
+        maxWidth: 300,
+        closeButton: true,
+        autoPan: true,
+        ...popupOptions, // spread any additional options (excluding content)
+      });
     }
     newMarker.addTo(this.#map);
     return newMarker;

@@ -35,6 +35,7 @@ export default class HomePresenter {
       }
 
       // Fixed the error message in console to match the actual method name
+      
       this.#view.populateStories(response.message, response.listStory || []);
     } catch (error) {
       console.error("intializeMapAndStoryList: error:", error);

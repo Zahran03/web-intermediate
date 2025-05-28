@@ -96,6 +96,7 @@ export function generateStoryDetailTemplate({
   createdAt,
   lat,
   lon,
+  location,
 }) {
   return `
     <div class="detail-image" style="background-image: url('${photo}')"></div>
@@ -106,15 +107,18 @@ export function generateStoryDetailTemplate({
         createdAt
       ).toLocaleString()}</div>
       <div class="detail-location">
-        <span>📍 Lokasi:</span> ${lat}, ${lon}
+        <span>Latitude:</span> ${lat}, <span>Longitude</span>${lon}
+      </div>
+      <div class="detail-location">
+        <span>Lokasi : </span> ${location || "Tidak diketahui"}
       </div>
       <div class="report-detail__body__map__container">
-          <h2 class="report-detail__map__title">Peta Lokasi</h2>
-          <div class="report-detail__map__container">
-            <div id="map" class="report-detail__map"></div>
-            <div id="map-loading-container"></div>
-          </div>
+        <h2 class="report-detail__map__title">Peta Lokasi</h2>
+        <div class="report-detail__map__container">
+          <div id="map-loading-container"></div>
+          <div id="map" class="report-detail__map" ></div>
         </div>
+      </div>
     </div>
   `;
 }
