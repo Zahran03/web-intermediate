@@ -8,10 +8,11 @@ import { setupSkipToContent } from "../utils";
 import { getToken, logoutUser } from "../utils/auth";
 
 class App {
-  #content = null;
-  #drawerButton = null;
-  #navigationDrawer = null;
+  #content;
+  #drawerButton;
+  #navigationDrawer;
   #skipLinkButton;
+
   constructor({ navigationDrawer, drawerButton, content, skipLinkButton }) {
     this.#content = content;
     this.#drawerButton = drawerButton;
